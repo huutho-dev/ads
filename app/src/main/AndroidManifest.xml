@@ -3,6 +3,7 @@
     package="com.vn.adssdk">
 
     <application
+        android:name=".AppApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -10,14 +11,74 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AdsSDK">
         <activity
+            android:name=".mix.FbThenGGInterstitialSupportActivity"
+            android:exported="true" />
+        <activity
+            android:name=".mix.FbThenGGRewardedActivity"
+            android:exported="true" />
+        <activity
+            android:name=".mix.FbThenGGNativeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".mix.FbThenGGBannerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".facebook.FbRewardedActivity"
+            android:exported="true" />
+        <activity
+            android:name=".facebook.FbNativeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".facebook.FbInterstitialSupportActivity"
+            android:exported="true" />
+        <activity
+            android:name=".facebook.FbInterstitialActivity"
+            android:exported="true" />
+        <activity
+            android:name=".facebook.FbBannerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".google.GoogleRewardedActivity"
+            android:exported="true" />
+        <activity
+            android:name=".google.GoogleNativeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".google.GoogleInterstitialSupportActivity"
+            android:exported="true" />
+        <activity
+            android:name=".google.GoogleInterstitialActivity"
+            android:exported="true" />
+        <activity
+            android:name=".google.GoogleBannerActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:label="@string/title_activity_main"
+            android:theme="@style/Theme.AdsSDK.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainJavaActivity"
+            android:exported="true"
+            android:label="@string/title_activity_main_java"
+            android:theme="@style/Theme.AdsSDK.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".mix.FbThenGGInterstitialActivity" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713" />
     </application>
 
 </manifest>

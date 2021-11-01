@@ -1,0 +1,1 @@
+https://developers.google.com/admob/android/quick-start
