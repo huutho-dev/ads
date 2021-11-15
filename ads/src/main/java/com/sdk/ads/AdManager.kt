@@ -54,8 +54,8 @@ object AdManager {
     private var fbRewardedLoading: FacebookRewarded? = null
 
 
-    private const val Rewarded_Time_Threshold = 1000 * 30 // 1 minute
-    private const val Interstitial_Time_Threshold = 1000 * 30 // 1 minute
+    private const val Rewarded_Time_Threshold = 1000 * 60
+    private const val Interstitial_Time_Threshold = 1000 * 60
 
 
     private val shouldLoadGGInterstitial: Boolean
