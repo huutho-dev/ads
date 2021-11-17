@@ -19,25 +19,14 @@ public class GoogleInterstitialActivity extends AppCompatActivity {
         setContentView(R.layout.activity_google_interstitial);
 
         findViewById(R.id.loadInterstitial).setOnClickListener(v -> {
-            AdManager.loadGGInterstitial(this);
+            AdManager.loadGGInters(this);
             startActivity(new Intent(GoogleInterstitialActivity.this, GoogleInterstitialSupportActivity.class));
-        });
-
-        findViewById(R.id.loadInterstitialAndShow).setOnClickListener(v -> {
-            AdManager.loadGGInterstitial(
-                    this,
-                    interstitialAd -> {
-                        AdManager.showGGInterstitial(this);
-                        return Unit.INSTANCE;
-                    },
-                    loadAdError -> Unit.INSTANCE
-            );
         });
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        AdManager.showGGInterstitial(this);
+        AdManager.showGGInters(this);
     }
 }

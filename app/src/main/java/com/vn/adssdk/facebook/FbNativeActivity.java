@@ -14,6 +14,6 @@ public class FbNativeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fb_native);
 
-        AdManager.showFbNative(findViewById(R.id.nativeAdLayout));
+        /*AdManager.showFbNative(findViewById(R.id.nativeAdLayout));*/
     }
 }

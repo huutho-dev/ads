@@ -15,6 +15,6 @@ public class FbBannerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fb_banner);
 
-        AdManager.showFbBanner(findViewById(R.id.bannerFbContainer));
+        /*AdManager.showFbBanner(findViewById(R.id.bannerFbContainer));*/
     }
 }

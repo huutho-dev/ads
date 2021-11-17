@@ -23,10 +23,10 @@ public class FbThenGGRewardedActivity extends AppCompatActivity {
         btn =  findViewById(R.id.btnWatch);
         btn.setEnabled(false);
 
-        AdManager.loadRewarded(this, () -> {
+        /*AdManager.loadRewarded(this, () -> {
             btn.setEnabled(true);
             return Unit.INSTANCE;
-        });
+        });*/
 
         findViewById(R.id.btnWatch).setOnClickListener(v -> {
             AlertDialog alertDialog = new AlertDialog.Builder(this)
@@ -36,7 +36,7 @@ public class FbThenGGRewardedActivity extends AppCompatActivity {
                     dialog.dismiss();
                 })
                 .setNegativeButton("OK", (dialog, which) -> {
-                    AdManager.showRewarded(FbThenGGRewardedActivity.this);
+                    /*AdManager.showRewarded(FbThenGGRewardedActivity.this);*/
                     dialog.dismiss();
                 })
                 .create();

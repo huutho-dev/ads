@@ -14,6 +14,6 @@ public class GoogleBannerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_google_banner);
 
-        AdManager.showGGBanner(findViewById(R.id.bannerContainer));
+        AdManager.showGGBanner(this, findViewById(R.id.bannerContainer));
     }
 }

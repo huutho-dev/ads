@@ -24,14 +24,14 @@ public class FbRewardedActivity extends AppCompatActivity {
         btn =  findViewById(R.id.btnWatch);
         btn.setEnabled(false);
 
-        AdManager.loadFbRewarded(this, loadAdError -> {
+        /*AdManager.loadFbRewarded(this, loadAdError -> {
             btn.setText(loadAdError.getErrorMessage());
             btn.setEnabled(false);
             return Unit.INSTANCE;
         },() -> {
             btn.setEnabled(true);
             return Unit.INSTANCE;
-        });
+        });*/
 
         findViewById(R.id.btnWatch).setOnClickListener(v -> {
             AlertDialog alertDialog = new AlertDialog.Builder(this)
@@ -41,7 +41,7 @@ public class FbRewardedActivity extends AppCompatActivity {
                         dialog.dismiss();
                     })
                     .setNegativeButton("OK", (dialog, which) -> {
-                        AdManager.showFbReward();
+                        /*AdManager.showFbReward();*/
                         dialog.dismiss();
                     })
                     .create();
