@@ -45,44 +45,18 @@ dependencies {
 - Set config cho sdk: ```AdManager.setAdsConfig(adsJsonConfig, isPremium)```
 ```json
 {
-  "isEnable" : true,
-  "ads": {
-    "google": {
-      "banner": {
-        "isEnable": true,
-        "adUnitId" : "ca-app-pub-3940256099942544/6300978111"
-      },
-      "interstitial": {
-        "isEnable": true,
-        "adUnitId" : "ca-app-pub-3940256099942544/1033173712"
-      },
-      "rewarded": {
-        "isEnable": true,
-        "adUnitId" : "ca-app-pub-3940256099942544/5224354917"
-      },
-      "native": {
-        "isEnable": true,
-        "adUnitId" : "ca-app-pub-3940256099942544/2247696110"
-      }
-    },
-    "facebook": {
-      "banner": {
-        "isEnable": true,
-        "adUnitId" : "233072595555793_233085135554539"
-      },
-      "interstitial": {
-        "isEnable": true,
-        "adUnitId" : "233072595555793_233084782221241"
-      },
-      "rewarded": {
-        "isEnable": true,
-        "adUnitId" : "233072595555793_233085135554539"
-      },
-      "native": {
-        "isEnable": true,
-        "adUnitId" : "233072595555793_233084965554556"
-      }
-    }
-  }
+  "isEnableAds": true,
+  "useFirstUnitId": false,
+  "ads": [
+    "GGBanner#MainFragment#ca-app-pub-3940256099942544/6300978111#enable",
+    "GGInterstitial#MainFragment#ca-app-pub-3940256099942544/1033173712#enable",
+    "GGRewarded#MainFragment#ca-app-pub-3940256099942544/5224354917#enable",
+    "GGNative#MainFragment#ca-app-pub-3940256099942544/2247696110#enable",
+    "GGOpenApp#MainFragment#ca-app-pub-3940256099942544/3419835294#enable",
+    "FbBanner#MainFragment#233072595555793_233085135554539#enable",
+    "FbInterstitial#MainFragment#233072595555793_233084782221241#enable",
+    "FbRewarded#MainFragment#233072595555793_233085135554539#enable",
+    "FbNative#MainFragment#233072595555793_233084965554556#enable"
+  ]
 }
 ```

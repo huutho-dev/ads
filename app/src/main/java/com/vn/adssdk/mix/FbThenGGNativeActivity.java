@@ -15,9 +15,9 @@ public class FbThenGGNativeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_fb_then_ggnative);
 
 
-        AdManager.showNative(
+        /*AdManager.showNative(
             findViewById(R.id.nativeAdLayout),
             findViewById(R.id.templateView)
-        );
+        );*/
     }
 }

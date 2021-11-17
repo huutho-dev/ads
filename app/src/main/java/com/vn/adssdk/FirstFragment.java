@@ -35,9 +35,9 @@ public class FirstFragment extends Fragment {
             .setOnClickListener(view1 -> {
 //                NavHostFragment.findNavController(FirstFragment.this).navigate(R.id.action_FirstFragment_to_SecondFragment);
 
-                AdManager.showGGBanner(binding.adContainer);
+//                AdManager.showGGBanner(binding.adContainer);
 
-                AdManager.showGGNative(binding.nativeAdView);
+//                AdManager.showGGNative(binding.nativeAdView);
 
 //                AdManager.loadGGInterstitial(getActivity(), interstitialAd -> {
 //                    AdManager.showGGInterstitial(getActivity());

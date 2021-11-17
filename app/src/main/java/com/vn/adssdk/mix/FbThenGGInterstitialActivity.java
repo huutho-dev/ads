@@ -18,23 +18,23 @@ public class FbThenGGInterstitialActivity extends AppCompatActivity {
         setContentView(R.layout.activity_fb_then_gginterstitial);
 
         findViewById(R.id.loadInterstitial).setOnClickListener(v -> {
-            AdManager.loadInterstitial(this);
+            /*AdManager.loadInterstitial(this);*/
             startActivity(new Intent(
                     FbThenGGInterstitialActivity.this,
                     FbThenGGInterstitialSupportActivity.class));
         });
 
         findViewById(R.id.loadInterstitialAndShow).setOnClickListener(v -> {
-            AdManager.loadInterstitial(this, () -> {
+            /*AdManager.loadInterstitial(this, () -> {
                 AdManager.showInterstitial(this);
                 return Unit.INSTANCE;
-            });
+            });*/
         });
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        AdManager.showInterstitial(this);
+       /* AdManager.showInterstitial(this);*/
     }
 }

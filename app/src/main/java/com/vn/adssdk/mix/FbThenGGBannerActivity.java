@@ -14,6 +14,6 @@ public class FbThenGGBannerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fb_then_gg_banner_activity);
 
-        AdManager.showBanner(findViewById(R.id.bannerContainer));
+        /*AdManager.showBanner(findViewById(R.id.bannerContainer));*/
     }
 }

@@ -18,57 +18,12 @@ import com.vn.adssdk.databinding.ActivityMainJavaBinding;
 
 public class MainJavaActivity extends AppCompatActivity {
 
-    String adsJsonConfig = "{\n" +
-            "  \"isEnable\" : true,\n" +
-            "  \"ads\": {\n" +
-            "    \"google\": {\n" +
-            "      \"banner\": {\n" +
-            "        \"isEnable\": true,\n" +
-            "        \"adUnitId\" : \"ca-app-pub-3940256099942544/6300978111\"\n" +
-            "      },\n" +
-            "      \"interstitial\": {\n" +
-            "        \"isEnable\": true,\n" +
-            "        \"adUnitId\" : \"ca-app-pub-3940256099942544/1033173712\"\n" +
-            "      },\n" +
-            "      \"rewarded\": {\n" +
-            "        \"isEnable\": true,\n" +
-            "        \"adUnitId\" : \"ca-app-pub-3940256099942544/5224354917\"\n" +
-            "      },\n" +
-            "      \"native\": {\n" +
-            "        \"isEnable\": true,\n" +
-            "        \"adUnitId\" : \"ca-app-pub-3940256099942544/2247696110\"\n" +
-            "      }\n" +
-            "    },\n" +
-            "    \"facebook\": {\n" +
-            "      \"banner\": {\n" +
-            "        \"isEnable\": true,\n" +
-            "        \"adUnitId\" : \"233072595555793_233085135554539\"\n" +
-            "      },\n" +
-            "      \"interstitial\": {\n" +
-            "        \"isEnable\": true,\n" +
-            "        \"adUnitId\" : \"233072595555793_233084782221241\"\n" +
-            "      },\n" +
-            "      \"rewarded\": {\n" +
-            "        \"isEnable\": true,\n" +
-            "        \"adUnitId\" : \"233072595555793_233085135554539\"\n" +
-            "      },\n" +
-            "      \"native\": {\n" +
-            "        \"isEnable\": true,\n" +
-            "        \"adUnitId\" : \"233072595555793_233084965554556\"\n" +
-            "      }\n" +
-            "    }\n" +
-            "  }\n" +
-            "}";
-
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainJavaBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        AdManager.initialize(this);
-        AdManager.setAdsConfig(adsJsonConfig, false);
 
         binding = ActivityMainJavaBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
