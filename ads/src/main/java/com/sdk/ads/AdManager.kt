@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import com.facebook.ads.AdSettings
 import com.facebook.ads.AudienceNetworkAds
 import com.google.android.gms.ads.*
-import com.sdk.ads.AdManager.loadGGInters
 import com.sdk.ads.google.nativetemplates.TemplateView
 import com.sdk.ads.manager.*
 
@@ -45,7 +44,12 @@ object AdManager {
 
     @JvmStatic
     @JvmOverloads
-    fun setAdsConfig(adsJsonConfig: String, isPremium: Boolean = false, delayShowTime: Long = 0) {
+    fun setAdsConfig(
+        adsJsonConfig: String,
+        isPremium: Boolean = false,
+        delayShowTime: Long = 0,
+        registerOpenAppAdImmediate: Boolean = true
+    ) {
         isEnableAd = !isPremium
         mTimeManager = TimeManager(delayShowTime)
         mAdUnitManager = AdUnitManager(adsJsonConfig, isPremium)
@@ -53,7 +57,18 @@ object AdManager {
         mIntersManager = InterstitialManager(mAdUnitManager)
         mNativeManager = NativeManager(mAdUnitManager)
         mRewardedManager = RewardedManager(mAdUnitManager)
-        mOpenAppManager = OpenAppManager(mApplication, mAdUnitManager)
+
+        if (registerOpenAppAdImmediate) {
+            mOpenAppManager = OpenAppManager(mApplication, mAdUnitManager)
+        }
+
+    }
+
+    @JvmStatic
+    fun Activity.registerOpenAppAd() {
+        if (!::mOpenAppManager.isInitialized) {
+            mOpenAppManager = OpenAppManager(mApplication, mAdUnitManager)
+        }
     }
 
     @JvmStatic
@@ -80,23 +95,44 @@ object AdManager {
     }
 
 
+    @JvmOverloads
     @JvmStatic
-    fun Activity.loadGGInters() {
+    fun Activity.loadGGInters(
+        onAdLoaded: () -> Unit = {}
+    ) {
         val label = this.javaClass.simpleName;
         val canLoadAd = mTimeManager.canLoadAd(label, Constants.AdType.GGInters)
         if (canLoadAd) {
             mIntersManager.loadGGInters(
                 this,
                 label,
-                onAdDismissedFullScreenContent = {
-                    mTimeManager.saveTimeLoad(label, Constants.AdType.GGInters)
+                onAdLoaded = {
+                    onAdLoaded.invoke()
                 })
         }
     }
 
+    @JvmOverloads
     @JvmStatic
-    fun Activity.showGGInters() {
-        mIntersManager.showGGInters(this, this.javaClass.simpleName)
+    fun Activity.showGGInters(
+        onAdStillLoading: () -> Unit = {},
+        onAdDismissedFullScreenContent: () -> Unit = {},
+        onAdFailedToShowFullScreenContent: () -> Unit = {}
+    ) {
+        val label = this.javaClass.simpleName
+
+        mIntersManager.showGGInters(this,
+            label,
+            onAdStillLoading = {
+                onAdStillLoading.invoke()
+            },
+            onAdFailedToShowFullScreenContent = {
+                onAdFailedToShowFullScreenContent.invoke()
+            },
+            onAdDismissedFullScreenContent = {
+                mTimeManager.saveTimeLoad(label, Constants.AdType.GGInters)
+                onAdDismissedFullScreenContent.invoke()
+            })
     }
 
 
@@ -108,7 +144,7 @@ object AdManager {
     ) {
         val label = this.javaClass.simpleName
 
-        fun loadGgRewarded(){
+        fun loadGgRewarded() {
             mRewardedManager.loadGGRewarded(
                 this,
                 this.javaClass.simpleName,

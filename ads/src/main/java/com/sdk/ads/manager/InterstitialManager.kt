@@ -25,12 +25,7 @@ class InterstitialManager(private val adUnitManager: AdUnitManager) {
         activity: Activity,
         screenLabel: String,
         onAdLoaded: (interstitialAd: InterstitialAd) -> Unit = {},
-        onAdFailedToLoad: (adError: LoadAdError) -> Unit = {},
-        onAdFailedToShowFullScreenContent: (adError: AdError) -> Unit = {},
-        onAdShowedFullScreenContent: () -> Unit = {},
-        onAdDismissedFullScreenContent: () -> Unit = {},
-        onAdImpression: () -> Unit = {},
-        onAdClicked: () -> Unit = {},
+        onAdFailedToLoad: (adError: LoadAdError) -> Unit = {}
     ) {
         val adRequestLoading = getAdLoadingByType(screenLabel, Constants.AdType.GGInters)
 
@@ -69,48 +64,6 @@ class InterstitialManager(private val adUnitManager: AdUnitManager) {
                             Constants.AdType.GGInters
                         )?.adObject = interstitialAd
 
-                        interstitialAd.fullScreenContentCallback =
-                            object : FullScreenContentCallback() {
-                                override fun onAdFailedToShowFullScreenContent(adError: AdError) {
-                                    super.onAdFailedToShowFullScreenContent(adError)
-                                    onAdFailedToShowFullScreenContent.invoke(adError)
-
-                                    listInters.remove(
-                                        getAdLoadingByType(
-                                            screenLabel,
-                                            Constants.AdType.GGInters
-                                        )
-                                    )
-                                }
-
-                                override fun onAdShowedFullScreenContent() {
-                                    super.onAdShowedFullScreenContent()
-                                    onAdShowedFullScreenContent.invoke()
-                                }
-
-                                override fun onAdDismissedFullScreenContent() {
-                                    super.onAdDismissedFullScreenContent()
-                                    onAdDismissedFullScreenContent.invoke()
-
-                                    listInters.remove(
-                                        getAdLoadingByType(
-                                            screenLabel,
-                                            Constants.AdType.GGInters
-                                        )
-                                    )
-                                }
-
-                                override fun onAdImpression() {
-                                    super.onAdImpression()
-                                    onAdImpression.invoke()
-                                }
-
-                                override fun onAdClicked() {
-                                    super.onAdClicked()
-                                    onAdClicked.invoke()
-                                }
-                            }
-
                         onAdLoaded.invoke(interstitialAd)
                     }
 
@@ -131,11 +84,73 @@ class InterstitialManager(private val adUnitManager: AdUnitManager) {
 
     }
 
-    fun showGGInters(activity: Activity, screenLabel: String) {
+    fun showGGInters(
+        activity: Activity,
+        screenLabel: String,
+        onAdStillLoading : () -> Unit = {},
+        onAdFailedToShowFullScreenContent: (adError: AdError) -> Unit = {},
+        onAdShowedFullScreenContent: () -> Unit = {},
+        onAdDismissedFullScreenContent: () -> Unit = {},
+        onAdImpression: () -> Unit = {},
+        onAdClicked: () -> Unit = {},
+    ) {
         val ad = getAdLoadingByType(screenLabel, Constants.AdType.GGInters)
-        if (ad != null && !ad.isLoading && ad.adObject != null && ad.adObject is InterstitialAd) {
-            (ad.adObject as InterstitialAd).show(activity)
+
+        if (ad != null && ad.isLoading){
+            onAdStillLoading.invoke()
+            return
         }
+
+        if (ad != null && !ad.isLoading && ad.adObject != null && ad.adObject is InterstitialAd) {
+
+            (ad.adObject as InterstitialAd).fullScreenContentCallback =
+                object : FullScreenContentCallback() {
+                    override fun onAdFailedToShowFullScreenContent(adError: AdError) {
+                        super.onAdFailedToShowFullScreenContent(adError)
+
+                        listInters.remove(
+                            getAdLoadingByType(
+                                screenLabel,
+                                Constants.AdType.GGInters
+                            )
+                        )
+
+                        onAdFailedToShowFullScreenContent.invoke(adError)
+                    }
+
+                    override fun onAdShowedFullScreenContent() {
+                        super.onAdShowedFullScreenContent()
+                        onAdShowedFullScreenContent.invoke()
+                    }
+
+                    override fun onAdDismissedFullScreenContent() {
+                        super.onAdDismissedFullScreenContent()
+                        listInters.remove(
+                            getAdLoadingByType(
+                                screenLabel,
+                                Constants.AdType.GGInters
+                            )
+                        )
+
+                        onAdDismissedFullScreenContent.invoke()
+                    }
+
+                    override fun onAdImpression() {
+                        super.onAdImpression()
+                        onAdImpression.invoke()
+                    }
+
+                    override fun onAdClicked() {
+                        super.onAdClicked()
+                        onAdClicked.invoke()
+                    }
+                }
+
+            (ad.adObject as InterstitialAd).show(activity)
+            return
+        }
+
+        onAdFailedToShowFullScreenContent.invoke(AdError(1,"",""))
     }
 
 

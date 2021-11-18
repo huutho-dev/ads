@@ -50,9 +50,7 @@
                     android:layout_width="@dimen/gnt_no_size"
                     android:layout_height="@dimen/gnt_no_size"
                     android:layout_marginStart="@dimen/gnt_default_margin"
-                    android:layout_marginTop="@dimen/gnt_default_margin"
                     android:layout_marginEnd="@dimen/gnt_default_margin"
-                    android:layout_marginBottom="@dimen/gnt_default_margin"
                     android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -81,12 +79,12 @@
                             android:layout_marginBottom="@dimen/gnt_no_margin"
                             android:lines="1"
                             android:textColor="@color/gnt_gray"
-                            android:textSize="@dimen/gnt_text_size_large"
+                            android:textSize="14sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"></TextView>
+                            app:layout_constraintTop_toTopOf="parent" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -94,6 +92,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/gnt_no_size"
                         android:layout_weight="@dimen/gnt_text_row_weight"
+                        android:gravity="center_vertical"
                         android:orientation="horizontal"
                         app:layout_constraintBottom_toTopOf="@+id/cta"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -119,9 +118,9 @@
 
                         <RatingBar
                             android:id="@+id/rating_bar"
-                            style="?android:attr/ratingBarStyleIndicator"
+                            style="?android:attr/ratingBarStyleSmall"
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/gnt_no_margin"
                             android:layout_marginTop="@dimen/gnt_no_margin"
                             android:layout_marginEnd="@dimen/gnt_no_margin"
@@ -155,7 +154,7 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@id/ad_notification_view"
-                            app:layout_constraintTop_toTopOf="parent"></TextView>
+                            app:layout_constraintTop_toTopOf="parent" />
 
                     </LinearLayout>
 
@@ -164,12 +163,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/gnt_no_size"
                         android:background="@color/gnt_blue"
+                        android:gravity="center_vertical"
                         android:lines="1"
+                        android:padding="8dp"
                         android:textColor="@color/gnt_white"
+                        android:textSize="9sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/row_two" />
+                        app:layout_constraintTop_toBottomOf="@id/row_two"
+                        tools:text="123" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

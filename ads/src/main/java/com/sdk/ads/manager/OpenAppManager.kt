@@ -20,7 +20,6 @@ class OpenAppManager(
     private val adUnitManager: AdUnitManager
 ): Application.ActivityLifecycleCallbacks, LifecycleObserver {
 
-
     private var currentActivity: Activity? = null
     private var isShowingAd = false
     private var loadTime: Long = 0
