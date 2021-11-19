@@ -1,4 +1,4 @@
-package com.sdk.ads.manager
+package com.sdk.ads.manager.open
 
 import android.app.Activity
 import android.app.Application
@@ -12,13 +12,12 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.appopen.AppOpenAd
-import com.sdk.ads.AdManager
-import com.sdk.ads.Constants
+import com.sdk.ads.AdSDK
 
-class OpenAppManager(
+class OpenAppAd(
     private val application: Application,
-    private val adUnitManager: AdUnitManager
-): Application.ActivityLifecycleCallbacks, LifecycleObserver {
+    private val adUnitId: String?
+) : Application.ActivityLifecycleCallbacks, LifecycleObserver {
 
     private var currentActivity: Activity? = null
     private var isShowingAd = false
@@ -28,10 +27,10 @@ class OpenAppManager(
     private var mLoadCallback = object : AppOpenAd.AppOpenAdLoadCallback() {
         override fun onAdLoaded(appOpenAd: AppOpenAd) {
             super.onAdLoaded(appOpenAd)
-            this@OpenAppManager.appOpenAd = appOpenAd
-            this@OpenAppManager.loadTime = System.currentTimeMillis()
+            this@OpenAppAd.appOpenAd = appOpenAd
+            this@OpenAppAd.loadTime = System.currentTimeMillis()
 
-            if (forceFirstTime){
+            if (forceFirstTime) {
                 showAdIfAvailable()
                 forceFirstTime = false
             }
@@ -75,14 +74,6 @@ class OpenAppManager(
                     appOpenAd = null
                     showAdIfAvailable()
                 }
-
-                override fun onAdImpression() {
-                    super.onAdImpression()
-                }
-
-                override fun onAdClicked() {
-                    super.onAdClicked()
-                }
             }
 
             appOpenAd?.fullScreenContentCallback = fullScreenContentCallback
@@ -93,23 +84,22 @@ class OpenAppManager(
     }
 
     private fun fetchAd() {
-        if (isAdAvailable()) {
+        if (isAdAvailable())
             return
-        }
 
-        if (!AdManager.isEnableAd) {
+        if (!AdSDK.isEnable)
             return
-        }
 
-        val adUnit = adUnitManager.findAdUnit(Constants.AdType.GGOpenApp, Constants.AdType.GGOpenApp.name)
+        if (AdSDK.isPremium)
+            return
 
-        if (adUnit?.isEnableUnit == true && adUnit.adUnitId.isNotBlank()){
-            val request = AdRequest.Builder().build()
-            AppOpenAd.load(
-                application, adUnit.adUnitId, request,
-                AppOpenAd.APP_OPEN_AD_ORIENTATION_PORTRAIT, mLoadCallback
-            )
-        }
+        adUnitId ?: return
+
+        val request = AdRequest.Builder().build()
+        AppOpenAd.load(
+            application, adUnitId, request,
+            AppOpenAd.APP_OPEN_AD_ORIENTATION_PORTRAIT, mLoadCallback
+        )
     }
 
     private fun isAdAvailable() = appOpenAd != null

@@ -5,7 +5,8 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.sdk.ads.AdManager;
+import com.sdk.ads.AdSDK;
+import com.sdk.ads.manager.AdManager;
 import com.vn.adssdk.MainActivity;
 import com.vn.adssdk.R;
 
@@ -19,7 +20,7 @@ public class GoogleInterstitialActivity extends AppCompatActivity {
         setContentView(R.layout.activity_google_interstitial);
 
         findViewById(R.id.loadInterstitial).setOnClickListener(v -> {
-            AdManager.loadGGInters(this);
+            AdSDK.loadInterstitial(this,"interstitial1");
             startActivity(new Intent(GoogleInterstitialActivity.this, GoogleInterstitialSupportActivity.class));
         });
     }
@@ -27,6 +28,6 @@ public class GoogleInterstitialActivity extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        AdManager.showGGInters(this);
+        AdSDK.showInterstitial("interstitial1");
     }
 }

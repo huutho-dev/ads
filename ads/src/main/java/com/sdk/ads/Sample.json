@@ -1,0 +1,52 @@
+{
+  "isEnable": true,
+  "timeDelayToLoad": 0,
+  "ads": {
+    "banner": [
+      {
+        "key": "key",
+        "value": "value"
+      },
+      {
+        "key": "key",
+        "value": "value"
+      }
+    ],
+    "interstitial": [
+      {
+        "key": "key",
+        "value": "value"
+      },
+      {
+        "key": "key",
+        "value": "value"
+      }
+    ],
+    "native": [
+      {
+        "key": "key",
+        "value": "value"
+      },
+      {
+        "key": "key",
+        "value": "value"
+      }
+    ],
+    "rewarded": [
+      {
+        "key": "key",
+        "value": "value"
+      },
+      {
+        "key": "key",
+        "value": "value"
+      }
+    ],
+    "open": [
+      {
+        "key": "openApp",
+        "value": ""
+      }
+    ]
+  }
+}

@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.sdk.ads.AdManager;
+import com.sdk.ads.AdSDK;
 import com.vn.adssdk.R;
 
 import kotlin.Unit;

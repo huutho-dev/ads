@@ -45,18 +45,55 @@ dependencies {
 - Set config cho sdk: ```AdManager.setAdsConfig(adsJsonConfig, isPremium)```
 ```json
 {
-  "isEnableAds": true,
-  "useFirstUnitId": false,
-  "ads": [
-    "GGBanner#MainFragment#ca-app-pub-3940256099942544/6300978111#enable",
-    "GGInterstitial#MainFragment#ca-app-pub-3940256099942544/1033173712#enable",
-    "GGRewarded#MainFragment#ca-app-pub-3940256099942544/5224354917#enable",
-    "GGNative#MainFragment#ca-app-pub-3940256099942544/2247696110#enable",
-    "GGOpenApp#MainFragment#ca-app-pub-3940256099942544/3419835294#enable",
-    "FbBanner#MainFragment#233072595555793_233085135554539#enable",
-    "FbInterstitial#MainFragment#233072595555793_233084782221241#enable",
-    "FbRewarded#MainFragment#233072595555793_233085135554539#enable",
-    "FbNative#MainFragment#233072595555793_233084965554556#enable"
-  ]
+  "isEnable": true,
+  "timeDelayToLoad": 0,
+  "ads": {
+    "banner": [
+      {
+        "key": "key",
+        "value": "value"
+      },
+      {
+        "key": "key",
+        "value": "value"
+      }
+    ],
+    "interstitial": [
+      {
+        "key": "key",
+        "value": "value"
+      },
+      {
+        "key": "key",
+        "value": "value"
+      }
+    ],
+    "native": [
+      {
+        "key": "key",
+        "value": "value"
+      },
+      {
+        "key": "key",
+        "value": "value"
+      }
+    ],
+    "rewarded": [
+      {
+        "key": "key",
+        "value": "value"
+      },
+      {
+        "key": "key",
+        "value": "value"
+      }
+    ],
+    "open": [
+      {
+        "key": "openApp",
+        "value": ""
+      }
+    ]
+  }
 }
 ```
