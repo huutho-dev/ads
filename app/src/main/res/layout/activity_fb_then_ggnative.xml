@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <com.sdk.ads.google.nativetemplates.TemplateView
+    <com.sdk.ads.template.google.nativetemplates.TemplateView
         android:id="@+id/templateView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

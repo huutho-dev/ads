@@ -13,7 +13,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.sdk.ads.AdManager;
+import com.sdk.ads.AdSDK;
 import com.vn.adssdk.databinding.ActivityMainJavaBinding;
 
 public class MainJavaActivity extends AppCompatActivity {
