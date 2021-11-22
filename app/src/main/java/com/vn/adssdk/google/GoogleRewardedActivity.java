@@ -7,8 +7,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.sdk.ads.AdManager;
 import com.vn.adssdk.R;
 
 import kotlin.Unit;
@@ -34,9 +32,9 @@ public class GoogleRewardedActivity extends AppCompatActivity {
                     dialog.dismiss();
                 })
                 .setNegativeButton("OK", (dialog, which) -> {
-                        AdManager.showGGRewardedAfterAskUser(this, rewardItem -> {
-                            Toast.makeText(this, "Nhận thưởng thành công", Toast.LENGTH_SHORT).show();
-                        });
+//                        AdManager.showGGRewardedAfterAskUser(this, rewardItem -> {
+//                            Toast.makeText(this, "Nhận thưởng thành công", Toast.LENGTH_SHORT).show();
+//                        });
                     dialog.dismiss();
                 })
                 .create();
@@ -53,16 +51,16 @@ public class GoogleRewardedActivity extends AppCompatActivity {
 
     private void loadRewarded(){
         btn.setEnabled(false);
-        AdManager.loadGGRewarded(this,
-            () -> {
-                btn.setEnabled(true);
-                return Unit.INSTANCE;
-            },
-            loadAdError -> {
-                btn.setText(loadAdError.getMessage());
-                btn.setEnabled(false);
-                return Unit.INSTANCE;
-            }
-        );
+//        AdManager.loadGGRewarded(this,
+//            () -> {
+//                btn.setEnabled(true);
+//                return Unit.INSTANCE;
+//            },
+//            loadAdError -> {
+//                btn.setText(loadAdError.getMessage());
+//                btn.setEnabled(false);
+//                return Unit.INSTANCE;
+//            }
+//        );
     }
 }

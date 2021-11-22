@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 
-import com.sdk.ads.AdManager;
+
 import com.vn.adssdk.R;
 
 import kotlin.Unit;

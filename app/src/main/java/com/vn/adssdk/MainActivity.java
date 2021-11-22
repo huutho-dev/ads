@@ -6,7 +6,7 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.sdk.ads.AdManager;
+
 import com.vn.adssdk.facebook.FbBannerActivity;
 import com.vn.adssdk.facebook.FbInterstitialActivity;
 import com.vn.adssdk.facebook.FbNativeActivity;

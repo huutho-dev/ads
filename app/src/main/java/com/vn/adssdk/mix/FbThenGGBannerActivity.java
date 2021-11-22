@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.sdk.ads.AdManager;
+
 import com.vn.adssdk.R;
 
 public class FbThenGGBannerActivity extends AppCompatActivity {

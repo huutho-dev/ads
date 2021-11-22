@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.sdk.ads.AdManager;
+
 import com.vn.adssdk.databinding.FragmentFirstBinding;
 
 import kotlin.Unit;

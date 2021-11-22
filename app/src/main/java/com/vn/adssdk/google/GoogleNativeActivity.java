@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.sdk.ads.AdManager;
+
 import com.vn.adssdk.R;
 
 public class GoogleNativeActivity extends AppCompatActivity {
@@ -13,6 +13,6 @@ public class GoogleNativeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_google_native);
-        AdManager.showGGNative(this,findViewById(R.id.templateView));
+//        AdManager.showGGNative(this,findViewById(R.id.templateView));
     }
 }

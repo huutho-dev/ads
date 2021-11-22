@@ -1,8 +1,6 @@
 package com.vn.adssdk
 
 import androidx.multidex.MultiDexApplication
-import com.sdk.ads.AdManager
-import com.sdk.ads.AdManager.setAdsConfig
 
 class AppApplication : MultiDexApplication() {
 
@@ -26,7 +24,5 @@ class AppApplication : MultiDexApplication() {
 
     override fun onCreate() {
         super.onCreate()
-        AdManager.initialize(this)
-        setAdsConfig(adsJsonConfig, false, 30000)
     }
 }

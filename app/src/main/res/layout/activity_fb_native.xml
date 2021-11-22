@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".facebook.FbNativeActivity">
 
-    <com.facebook.ads.NativeAdLayout
-        android:visibility="gone"
-        android:id="@+id/nativeAdLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+<!--    <com.facebook.ads.NativeAdLayout-->
+<!--        android:visibility="gone"-->
+<!--        android:id="@+id/nativeAdLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"/>-->
 
 </FrameLayout>

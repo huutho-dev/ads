@@ -8,16 +8,16 @@
     android:layout_height="match_parent"
     tools:context=".mix.FbThenGGNativeActivity">
 
-    <com.facebook.ads.NativeAdLayout
-        android:visibility="gone"
-        android:id="@+id/nativeAdLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+<!--    <com.facebook.ads.NativeAdLayout-->
+<!--        android:visibility="gone"-->
+<!--        android:id="@+id/nativeAdLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"/>-->
 
-    <com.sdk.ads.google.nativetemplates.TemplateView
-        android:id="@+id/templateView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone" />
+<!--    <com.sdk.ads.google.nativetemplates.TemplateView-->
+<!--        android:id="@+id/templateView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:visibility="gone" />-->
 
 </LinearLayout>

@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.sdk.ads.AdManager;
+
 import com.vn.adssdk.R;
 import com.vn.adssdk.google.GoogleInterstitialActivity;
 import com.vn.adssdk.google.GoogleInterstitialSupportActivity;
