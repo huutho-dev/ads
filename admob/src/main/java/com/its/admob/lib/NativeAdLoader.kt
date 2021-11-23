@@ -31,9 +31,10 @@ object NativeAdLoader {
     @JvmOverloads
     fun addNative(
         activity: FragmentActivity?,
-        templateView : GGNativeView,
+        templateView: GGNativeView,
         adUnitId: String,
         useCustomNativeLayout: Boolean = false,
+        onCheckedIsPremium : () -> Unit = {},
         onAdClosed: () -> Unit = {},
         onAdFailedToLoad: () -> Unit = {},
         onAdOpened: () -> Unit = {},
@@ -42,11 +43,15 @@ object NativeAdLoader {
         onAdImpression: () -> Unit = {},
         onBuildNativeAd: (ad: NativeAd, useCustomNativeLayout: Boolean) -> Unit = { _, _ -> },
     ) {
-        activity?:return
+        activity ?: return
         templateView.visibility = View.GONE
 
-        if (AdMobLib.isPremium)
+        if (AdMobLib.isPremium) {
+            templateView.visibility = View.GONE
+            onCheckedIsPremium.invoke()
             return
+        }
+
 
         val activityLifeCycleObserver = object : DefaultLifecycleObserver {
             override fun onDestroy(owner: LifecycleOwner) {

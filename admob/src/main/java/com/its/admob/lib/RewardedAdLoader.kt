@@ -18,9 +18,12 @@ object RewardedUtils {
 
     private var loadFailureCount = 0
 
-    fun loadRewarded(onRewardLoaded: () -> Unit = {}) {
-        if (AdMobLib.isPremium)
+    fun checkPremiumBeforeLoadRewarded(onRewardLoaded: (isPremium : Boolean) -> Unit = {},) {
+        if (AdMobLib.isPremium){
+            onRewardLoaded.invoke(true)
             return
+        }
+
 
         if (isLoading)
             return
@@ -39,7 +42,7 @@ object RewardedUtils {
                     isLoading = false
                     rewarded = rewardedAd
                     loadFailureCount = 0
-                    onRewardLoaded.invoke()
+                    onRewardLoaded.invoke(false)
                 }
 
                 override fun onAdFailedToLoad(loadAdError: LoadAdError) {
@@ -50,7 +53,7 @@ object RewardedUtils {
                     loadFailureCount++
 
                     if (loadFailureCount <= 3) {
-                        loadRewarded(onRewardLoaded)
+                        checkPremiumBeforeLoadRewarded(onRewardLoaded)
                     }
                 }
             })
@@ -65,8 +68,10 @@ object RewardedUtils {
         onUserEarnedReward: (item: RewardItem) -> Unit = {},
         onShowRewarded: (showCode: AdMobLib.AdShowCode) -> Unit = {},
     ) {
-        if (AdMobLib.isPremium)
+        if (AdMobLib.isPremium){
+            onShowRewarded.invoke(AdMobLib.AdShowCode.PREMIUM)
             return
+        }
 
         if (isLoading) {
             onShowRewarded.invoke(AdMobLib.AdShowCode.LOADING)

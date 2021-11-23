@@ -6,13 +6,6 @@ import com.google.android.gms.ads.*
 
 object BannerAdLoader {
     private const val bannerTag = "BannerAd"
-    const val KEY_FILES_ACTIVITY = "ca-app-pub-3940256099942544/6300978111"
-    const val KEY_SEARCH_ACTIVITY = "ca-app-pub-3940256099942544/6300978111"
-
-    const val KEY_PDF_ACTIVITY = "ca-app-pub-3940256099942544/6300978111"
-    const val KEY_WORD_ACTIVITY = "ca-app-pub-3940256099942544/6300978111"
-    const val KEY_EXCEL_ACTIVITY = "ca-app-pub-3940256099942544/6300978111"
-    const val KEY_POWER_POINT_ACTIVITY = "ca-app-pub-3940256099942544/6300978111"
 
     @JvmStatic
     @JvmOverloads
@@ -20,6 +13,7 @@ object BannerAdLoader {
         viewGroup: ViewGroup,
         adUnitId: String,
         adSize: AdSize = AdSize.FULL_BANNER,
+        onCheckedIsPremium : () -> Unit = {},
         onAdClosed: () -> Unit = {},
         onAdFailedToLoad: () -> Unit = {},
         onAdOpened: () -> Unit = {},
@@ -27,8 +21,10 @@ object BannerAdLoader {
         onAdClicked: () -> Unit = {},
         onAdImpression: () -> Unit = {},
     ) {
-        if (AdMobLib.isPremium)
+        if (AdMobLib.isPremium){
+            onCheckedIsPremium.invoke()
             return
+        }
 
         val adListener = object : AdListener() {
             override fun onAdClosed() {

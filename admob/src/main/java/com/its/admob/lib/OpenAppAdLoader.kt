@@ -15,7 +15,8 @@ import com.google.android.gms.ads.appopen.AppOpenAd
 
 class OpenAppAdLoader(
     private val application: Application,
-    private val adUnitId: String?
+    private val adUnitId: String?,
+    private var isForceOpenFirst : Boolean = true
 ) : Application.ActivityLifecycleCallbacks, LifecycleObserver {
 
     private var currentActivity: Activity? = null
@@ -29,9 +30,9 @@ class OpenAppAdLoader(
             this@OpenAppAdLoader.appOpenAd = appOpenAd
             this@OpenAppAdLoader.loadTime = System.currentTimeMillis()
 
-            if (forceFirstTime) {
+            if (isForceOpenFirst) {
                 showAdIfAvailable()
-                forceFirstTime = false
+                isForceOpenFirst = false
             }
         }
 
@@ -39,7 +40,6 @@ class OpenAppAdLoader(
             super.onAdFailedToLoad(error)
         }
     }
-    private var forceFirstTime = true
 
     init {
         application.registerActivityLifecycleCallbacks(this)

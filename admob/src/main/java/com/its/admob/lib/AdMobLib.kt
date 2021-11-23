@@ -10,10 +10,11 @@ object AdMobLib {
         WAITING,
         FAILED,
         DISMISS,
+        PREMIUM,
     }
 
     internal lateinit var application: Application
-    internal var isPremium: Boolean = false
+    var isPremium: Boolean = false
     internal var interstitialAdUnitId: String = ""
     internal var rewardedAdUnitId: String = ""
     internal var timeDelayToLoad: Long = 0L
@@ -21,7 +22,6 @@ object AdMobLib {
     fun init(application: Application, isPremium: Boolean = false) {
         this.application = application
         this.isPremium = isPremium
-
     }
 
     fun setInterstitialUnitId(unitId: String, timeDelayToLoad: Long = 0) {
@@ -34,7 +34,7 @@ object AdMobLib {
         rewardedAdUnitId = unitId
     }
 
-    fun registerOpenAppAd(adUnitId: String) {
-        OpenAppAdLoader(application, adUnitId)
+    fun registerOpenAppAd(adUnitId: String, isForceOpenFirst : Boolean = true) {
+        OpenAppAdLoader(application, adUnitId, isForceOpenFirst)
     }
 }

@@ -74,8 +74,11 @@ object InterstitialAdLoader {
     ) {
         activity ?: return
 
-        if (AdMobLib.isPremium)
+        if (AdMobLib.isPremium){
+            onShowInterstitial.invoke(AdMobLib.AdShowCode.PREMIUM)
             return
+        }
+
 
         if (System.currentTimeMillis() - lastTimeAdShow < AdMobLib.timeDelayToLoad) {
             Log.i(intersTag, "onShowInterstitial WAITING")
